@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# todo-list-ui
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -36,5 +36,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 =======
->>>>>>> c2aba7e30f80c2d2327865de2b00a4daa77fabf3
-# todo-list-ui
+
