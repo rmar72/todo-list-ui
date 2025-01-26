@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import API from '../utils/api';
+import taskAPI from '../utils/api';
 
 interface Task {
   id: number;
@@ -15,7 +15,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    API.get('/tasks')
+    taskAPI.get('/tasks')
       .then((response) => setTasks(response.data))
       .catch((error) => console.error('Error fetching tasks:', error))
       .finally(() => setLoading(false));
