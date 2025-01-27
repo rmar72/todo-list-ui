@@ -42,7 +42,7 @@ const HomePage = () => {
       <Header />
       <div className="text-center mb-8 mt-[-25]">
         <Link
-          href="/tasks/create"
+          href="/task/create"
           className="bg-[#1E6F9F] hover:bg-[#155E80] text-white py-3 px-6 mb-6 rounded-lg text-lg w-[736px] h-[52px] inline-flex justify-center items-center gap-2 shadow-md"
         >
           Create Task +
