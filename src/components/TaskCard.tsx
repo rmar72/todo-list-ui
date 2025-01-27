@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTaskContext } from '@/context/TaskContext';
+import { useState } from 'react';
+import ConfirmationDialog from './ConfirmationDialog';
 
 interface TaskCardProps {
   task: {
@@ -15,6 +17,7 @@ interface TaskCardProps {
 
 const TaskCard: React.FC<TaskCardProps> = ({ task, onToggle, onDelete }) => {
   const { setSelectedTask } = useTaskContext();
+  const [showConfirm, setShowConfirm] = useState(false);
 
   return (
     <div
@@ -54,6 +57,17 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onToggle, onDelete }) => {
           />
         </div>
       </button>
+
+      {showConfirm && (
+        <ConfirmationDialog
+          message="Are you sure you want to delete this task?"
+          onConfirm={() => {
+            onDelete(task.id);
+            setShowConfirm(false);
+          }}
+          onCancel={() => setShowConfirm(false)}
+        />
+      )}
     </div>
   );
 };
