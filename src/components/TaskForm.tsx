@@ -5,11 +5,12 @@ import ColorPicker from './ColorPicker';
 interface TaskFormProps {
   onSave: (data: { title: string; color: string; completed: boolean }) => void;
   loading: boolean;
+  initialData?: { title: string; color: string; completed: boolean };
 }
 
-const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading }) => {
-  const [title, setTitle] = useState('');
-  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading, initialData }) => {
+  const [title, setTitle] = useState(initialData?.title || '');
+  const [selectedColor, setSelectedColor] = useState<string | null>(initialData?.color || null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading }) => {
       alert('Title and Color are required!');
       return;
     }
-    onSave({ title, color: selectedColor, completed: false });
+    onSave({ title, color: selectedColor, completed: initialData?.completed || false });
   };
 
   return (

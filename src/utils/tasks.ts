@@ -26,3 +26,12 @@ export const createTask = async (data: { title: string; color: string }) => {
     throw error;
   }
 };
+
+export const updateTask = async (id: number, data: { title: string; color: string; completed: boolean }) => {
+  try {
+    await taskAPI.put(`/tasks/${id}`, data);
+  } catch (error) {
+    console.error('Error updating task:', error);
+    throw error;
+  }
+};
