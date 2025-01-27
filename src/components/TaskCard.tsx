@@ -45,7 +45,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onToggle, onDelete }) => {
       <button
         onClick={(e) => {
           e.stopPropagation();
-          onDelete(task.id);
+          setShowConfirm(true);
         }}
       >
         <div className="w-6 h-6 flex items-center justify-center text-gray-400">
