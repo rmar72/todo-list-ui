@@ -38,7 +38,7 @@ const HomePage = () => {
   const completedTasks = tasks.filter((task) => task.completed).length;
 
   return (
-    <div className="text-white min-h-screen">
+    <div className="text-white min-h-screen mb-20">
       <Header />
       <div className="text-center mb-8 mt-[-25]">
         <Link

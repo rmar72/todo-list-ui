@@ -38,15 +38,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading, initialData }) => 
         />
       </div>
 
-      <div>
-        <label className="block text-lg text-[#4EA8DE] font-semibold mb-3">Color</label>
-        <ColorPicker
-          allowedColors={allowedColors}
-          selectedColor={selectedColor}
-          setSelectedColor={setSelectedColor}
-        />
-      </div>
-
       {initialData && (
         <div>
           <label className="block text-lg text-[#4EA8DE] font-semibold mb-3">Completed</label>
@@ -62,6 +53,15 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading, initialData }) => 
           </div>
         </div>
       )}
+
+      <div>
+        <label className="block text-lg text-[#4EA8DE] font-semibold mb-3">Color</label>
+        <ColorPicker
+          allowedColors={allowedColors}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+        />
+      </div>
 
       <div className="h-[3px]" />
 
