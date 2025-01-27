@@ -94,7 +94,7 @@ const HomePage = () => {
                   setTasks(updatedTasks);
                 }}
                 className="appearance-none w-[17.45px] h-[17.45px] rounded-full border-2 border-[#4EA8DE] checked:bg-[#8284FA] checked:border-[#8284FA] flex items-center justify-center relative
-                before:content-[''] before:absolute before:w-[8px] before:h-[14px] before:mb-1 before:border-b-2 before:border-r-2 before:border-white before:rotate-45 before:opacity-0 checked:before:opacity-100"
+                before:content-[''] before:absolute before:mb-1 before:w-[5px] before:h-[10px] before:translate-x-[0.5px] before:translate-y-[1px] before:border-b-2 before:border-r-2 before:border-white before:rotate-45 before:opacity-0 checked:before:opacity-100"
               />
 
               <span className={`text-lg ${task.completed ? 'line-through' : ''}`}>
