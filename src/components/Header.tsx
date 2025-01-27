@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Header = () => {
   return (
-    <header className="bg-black text-center py-8">
+    <header className="bg-black text-center py-14">
       <Image
         src="https://cdn-icons-png.flaticon.com/512/231/231138.png"
         alt="Rocket Icon"

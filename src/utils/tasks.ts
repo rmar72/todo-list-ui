@@ -17,3 +17,12 @@ export const deleteTask = async (id: number) => {
     throw error;
   }
 };
+
+export const createTask = async (data: { title: string; color: string }) => {
+  try {
+    await taskAPI.post('/tasks', data);
+  } catch (error) {
+    console.error('Error creating task:', error);
+    throw error;
+  }
+};
