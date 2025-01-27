@@ -5,12 +5,13 @@ import ColorPicker from './ColorPicker';
 interface TaskFormProps {
   onSave: (data: { title: string; color: string; completed: boolean }) => void;
   loading: boolean;
-  initialData?: { title: string; color: string; completed: boolean };
+  initialData?: { title: string; color: string; completed: boolean }; // Optional for edit mode
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading, initialData }) => {
   const [title, setTitle] = useState(initialData?.title || '');
   const [selectedColor, setSelectedColor] = useState<string | null>(initialData?.color || null);
+  const [completed, setCompleted] = useState(initialData?.completed || false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading, initialData }) => 
       alert('Title and Color are required!');
       return;
     }
-    onSave({ title, color: selectedColor, completed: initialData?.completed || false });
+    onSave({ title, color: selectedColor, completed });
   };
 
   return (
@@ -45,6 +46,22 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSave, loading, initialData }) => 
           setSelectedColor={setSelectedColor}
         />
       </div>
+
+      {initialData && (
+        <div>
+          <label className="block text-lg text-[#4EA8DE] font-semibold mb-3">Completed</label>
+          <div className="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              checked={completed}
+              onChange={(e) => setCompleted(e.target.checked)}
+              className="appearance-none w-[17.45px] h-[17.45px] rounded-full border-2 border-[#4EA8DE] checked:bg-[#8284FA] checked:border-[#8284FA] flex items-center justify-center relative
+                before:content-[''] before:absolute before:mb-1 before:w-[5px] before:h-[10px] before:translate-x-[0.5px] before:translate-y-[1px] before:border-b-2 before:border-r-2 before:border-white before:rotate-45 before:opacity-0 checked:before:opacity-100"
+            />
+            <span className="text-lg text-[#F2F2F2]">{completed ? 'Completed' : 'Not Completed'}</span>
+          </div>
+        </div>
+      )}
 
       <div className="h-[3px]" />
 
