@@ -51,57 +51,71 @@ const HomePage = () => {
       </div>
 
       {/* my taasks and completed count section */}
-      <div className="flex justify-between items-center w-[736px] h-[19px] gap-0 px-0 mb-8 mx-auto">
+      <div className="flex justify-between items-center w-[736px] h-[19px] gap-0 px-0 mb-6 mx-auto">
         <div className="text-lg flex items-center gap-2">
           <span className="font-semibold text-[#4EA8DE]">Tasks:</span>
-          <span>{tasks.length}</span>
+          <span
+            className="flex items-center justify-center px-2 py-[2px] gap-2 w-auto h-[19px] bg-[#333333] rounded-full text-white text-sm"
+          >
+            {tasks.length}
+          </span>
         </div>
         <div className="text-lg flex items-center gap-2">
           <span className="font-semibold text-[#8284FA]">Completed:</span>
-          <span>
+          <span
+            className="flex items-center justify-center px-2 py-[2px] gap-2 w-auto h-[19px] bg-[#333333] rounded-full text-white text-sm"
+          >
             {completedTasks} of {tasks.length}
           </span>
         </div>
       </div>
 
-      <div className="w-[736px] h-[1px] bg-gray-500 mx-auto mb-20"></div>
+      <div className={`w-[736px] h-[1px] bg-gray-500 mx-auto ${tasks.length ? 'mb-10' : 'mb-20'}`} />
 
       {/* Task list section */}
       <div className="px-8 space-y-4">
         {tasks.map((task) => (
           <div
             key={task.id}
-            className={`flex justify-between items-center p-4 rounded-lg border ${
-              task.completed ? 'bg-gray-800 text-gray-400' : 'bg-gray-900'
-            }`}
+            className={`flex justify-between items-center w-[736px] h-[72px] px-4 rounded-t-lg border-t border-gray-700 ${
+              task.completed ? 'bg-gray-800 text-gray-400' : 'bg-[#333333]'
+            } mx-auto`}
           >
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center gap-3">
               <input
                 type="checkbox"
                 checked={task.completed}
                 onChange={() => {
                   const updatedTasks = tasks.map((taskItem) =>
-                    taskItem.id === task.id ? { ...taskItem, completed: !taskItem.completed } : taskItem
+                    taskItem.id === task.id
+                      ? { ...taskItem, completed: !taskItem.completed }
+                      : taskItem
                   );
                   setTasks(updatedTasks);
                 }}
-                className="form-checkbox h-5 w-5 text-blue-600"
+                className="appearance-none w-[17.45px] h-[17.45px] rounded-full border-2 border-[#4EA8DE] checked:bg-[#8284FA] checked:border-[#8284FA] flex items-center justify-center relative
+                before:content-[''] before:absolute before:w-[8px] before:h-[14px] before:mb-1 before:border-b-2 before:border-r-2 before:border-white before:rotate-45 before:opacity-0 checked:before:opacity-100"
               />
-              <span
-                className={`text-lg ${task.completed ? 'line-through' : ''}`}
-              >
+
+              <span className={`text-lg ${task.completed ? 'line-through' : ''}`}>
                 {task.title}
               </span>
             </div>
             <button
               onClick={() => {
                 taskAPI.delete(`/tasks/${task.id}`).then(() => {
-                  setTasks(tasks.filter((t) => t.id !== task.id));
+                  setTasks(tasks.filter((ftask) => ftask.id !== task.id));
                 });
               }}
-              className="text-gray-500 hover:text-red-500"
             >
-              🗑️
+              <div className="w-6 h-6 flex items-center justify-center text-gray-400">
+                <Image
+                  src="https://static-00.iconduck.com/assets.00/trash-bin-delete-icon-1919x2048-pm5v6la4.png"
+                  alt="Trash Icon"
+                  width={24}
+                  height={24}
+                />
+              </div>
             </button>
           </div>
         ))}
